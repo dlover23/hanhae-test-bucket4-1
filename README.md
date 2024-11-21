@@ -60,3 +60,31 @@
 2. CDN(Content Delivery Network)
    - 웹 콘텐츠(이미지, 비디오, 스크립트 등)를 사용자에게 더 빠르게 전달하기 위해 서버를 분산시켜 놓은 네트워크
    - 사용자가 요청한 콘텐츠를 가장 가까운 서버에서 제공하여 속도를 향상
+
+---
+
+## CDN과 성능최적화
+
+### 테스트 URL
+
+- S3 : http://hanghae-test-bucket.s3-website-ap-southeast-2.amazonaws.com
+- CloudFrount : https://d2ebp1lqx0gvo2.cloudfront.net
+
+### 테스트 방법
+
+- 크롬 개발자 도구 네트워크로 속도 측정
+
+### 테스트 및 결과
+
+1. 캐시 비교
+
+- S3는 X-Cache가 없고 CDN에서 X-Cache 가 있어서 캐시 동작 확인
+  ![alt text](./캐시비교.png)
+
+2. 네트워크 비교
+
+![alt text](./네트워크비교.png)
+
+| S3 성능 | CDN 성능 | 감소율 |
+| ------- | -------- | ------ |
+| 1.20초  | 0.871초  | 27.4%  |
